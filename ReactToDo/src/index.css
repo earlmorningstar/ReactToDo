@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  font-size: 60px;
+  text-align: center;
+  margin: 15px 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.addTask {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 160px;
+}
+
+.addTask button {
+  font-size: 15px;
+  background-color: rgb(80, 118, 189);
+  color: #ffffff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.addTask select {
+  padding: 10px 10px;
+  color: rgb(48, 46, 46);
+  background-color: rgb(80, 118, 189);
+  border-radius: 6px;
+}
+
+.layoutBox {
+  background-color: red;
+  padding: 15px;
+  margin: 20px 160px 0 160px;
+  border-radius: 7px;
+}
+
+.layoutMin {
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-radius: 7px;
+}
+
+.checknTitle {
+  display: flex;
+  gap: 8px;
+}
+
+.checkbox {
+  transform: scale(2.2);
+  margin-right: 10px;
+}
+
+.taskTitle {
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.timenDate {
+    display: flex;
+    gap: 10px;
+}
+
+.screenBtn {
+    display: flex;
+    gap: 10px;
+}
+
+.screenBtn button {
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    background-color: cornflowerblue;
+
+}
