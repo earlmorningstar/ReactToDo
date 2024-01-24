@@ -88,7 +88,7 @@
 
 .newTaskDiv {
   text-align: center;
-  margin: 20px 0;
+  margin: 20px 0 20px 290px;
 }
 
 .newTaskDiv h2 {
@@ -99,9 +99,10 @@
 
 .inputNbtn {
   display: flex;
+  text-align: center;
   justify-content: center;
   gap: 30px;
-  margin: 0 200px;
+  /* margin-right: 200px; */
 
 }
 

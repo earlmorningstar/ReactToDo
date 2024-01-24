@@ -19,7 +19,13 @@ export default function NewTask({ onCreateTask }) {
     <div className="newTaskDiv">
       <h2>Create New Task</h2>
       <div className="inputNbtn">
-        <input type="text" onChange={handleChange} value={enteredTask} placeholder="Type here..." />
+        <input
+          type="text"
+          onChange={handleChange}
+          value={enteredTask}
+          placeholder="Type here..."
+          
+        />
         <button onClick={handleAddTask}>Save</button>
       </div>
     </div>
