@@ -85,3 +85,37 @@
     background-color: cornflowerblue;
 
 }
+
+.newTaskDiv {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.newTaskDiv h2 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.inputNbtn {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 200px;
+
+}
+
+.inputNbtn button {
+  padding: 5px 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    background-color: cornflowerblue;
+}
+
+.inputNbtn input {
+  padding: 8px;
+  border-radius: 8px;
+  place
+}
