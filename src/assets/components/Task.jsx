@@ -1,35 +1,25 @@
 import NewTask from "./NewTask.jsx";
 import { useState } from "react";
 
-
 export default function Task() {
+  const [showNewTask, setShowNewTask] = useState(false);
+  const [task, setTask] = useState([]);
 
-const [showNewTask, setShowNewTask] = useState(false);
-
-  function handleAddTask(taskText) {
-    setShowNewTask(false);
+  function handleAddTask(taskInfo) {
+    setTask((prevTask) => [...prevTask, taskInfo]);
   }
 
-
-
   return (
-
-    
-
     <div>
       <form action="">
         <div className="addTask">
-        {showNewTask ? (<NewTask onCreateTask={handleAddTask} />) 
-    : <button onClick={() => setShowNewTask(true)}>Create New Task</button>}
-            
-          {/* <button>Create New Task</button> */}
-
-          {/* <div className="taskBtnAndSelect">
-            <select id="task" name="task">
-              <option value="all">All</option>
-              <option value="second task">Second task</option>
-            </select>
-          </div> */}
+          {showNewTask ? (
+            <NewTask onCreateTask={handleAddTask} />
+          ) : (
+            <button onClick={() => setShowNewTask(true)}>
+              Create New Task
+            </button>
+          )}
         </div>
       </form>
 
@@ -54,3 +44,15 @@ const [showNewTask, setShowNewTask] = useState(false);
     </div>
   );
 }
+
+
+
+
+  {/* <button>Create New Task</button> */}
+
+          {/* <div className="taskBtnAndSelect">
+            <select id="task" name="task">
+              <option value="all">All</option>
+              <option value="second task">Second task</option>
+            </select>
+          </div> */}
