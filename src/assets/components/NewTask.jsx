@@ -1,11 +1,18 @@
 import { useState } from "react";
 
 export default function NewTask({ onCreateTask }) {
+
   const [enteredTask, setEnteredTask] = useState({
     title: "",
     date: "",
     time: "",
   });
+
+  // const [enteredTask, setEnteredTask] = useState({
+  //   title: "",
+  //   date: "",
+  //   time: "",
+  // });
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -15,17 +22,38 @@ export default function NewTask({ onCreateTask }) {
     }));
   }
 
+  // function handleAddTask() {
+  //   if (enteredTask.trim() === "") {
+  //     return;
+  //   }
+  //   onCreateTask(enteredTask);
+  //   setEnteredTask({ title: "", date: "", time: "" });
+  // }
+
+  // function handleAddTask() {
+  //   if (enteredTask.title.trim() === "") {
+  //     return;
+  //   }
+  //   onCreateTask(enteredTask);
+  //   setEnteredTask({ title: "", date: "", time: "" });
+  // }
+
   function handleAddTask() {
-    if (enteredTask.trim() === "") {
+    // e.preventDefault();
+    if (enteredTask.title.trim() === "") {
       return;
     }
-    onCreateTask(enteredTask);
+  
+    const taskIndex = Object.keys(enteredTask).length; // Get the next available index
+    onCreateTask({ ...enteredTask, index: taskIndex }); // Include the index in the task object
     setEnteredTask({ title: "", date: "", time: "" });
   }
+  
+  
 
   return (
     <div className="newTaskDiv">
-      <h2>Input New Task:</h2>
+      <h2>Input New Todo:</h2>
       <div className="inputNbtn">
         <div className="inputNbtnInpDiv">
           <div className="labelAndInput">
@@ -35,7 +63,7 @@ export default function NewTask({ onCreateTask }) {
               name="title"
               onChange={handleChange}
               value={enteredTask.title}
-              placeholder="Type Task Title here..."
+              placeholder="Type Todo Title here..."
             />
           </div>
           <div className="labelAndInput">
