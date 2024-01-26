@@ -108,6 +108,10 @@
   gap: 10px;
 }
 
+.lists {
+  list-style: none;
+}
+
 .inputNbtn button {
   margin-top: 10px;
   padding: 5px 8px;

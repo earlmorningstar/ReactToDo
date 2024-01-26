@@ -1,18 +1,11 @@
 import { useState } from "react";
 
 export default function NewTask({ onCreateTask }) {
-
   const [enteredTask, setEnteredTask] = useState({
     title: "",
     date: "",
     time: "",
   });
-
-  // const [enteredTask, setEnteredTask] = useState({
-  //   title: "",
-  //   date: "",
-  //   time: "",
-  // });
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -23,14 +16,6 @@ export default function NewTask({ onCreateTask }) {
   }
 
   // function handleAddTask() {
-  //   if (enteredTask.trim() === "") {
-  //     return;
-  //   }
-  //   onCreateTask(enteredTask);
-  //   setEnteredTask({ title: "", date: "", time: "" });
-  // }
-
-  // function handleAddTask() {
   //   if (enteredTask.title.trim() === "") {
   //     return;
   //   }
@@ -39,17 +24,16 @@ export default function NewTask({ onCreateTask }) {
   // }
 
   function handleAddTask() {
-    // e.preventDefault();
     if (enteredTask.title.trim() === "") {
       return;
     }
-  
     const taskIndex = Object.keys(enteredTask).length; // Get the next available index
     onCreateTask({ ...enteredTask, index: taskIndex }); // Include the index in the task object
     setEnteredTask({ title: "", date: "", time: "" });
   }
-  
-  
+
+
+
 
   return (
     <div className="newTaskDiv">
@@ -91,14 +75,3 @@ export default function NewTask({ onCreateTask }) {
     </div>
   );
 }
-
-/////
-// function handleChange(evt) {
-//   setEnteredTask(evt.target.value);
-// }
-
-// const handleInputChange = (e) => {
-//   const { name, value } = e.target;
-//   setTask((prevTask) => ({ ...prevTask, [name]: value }));
-// };
-/////
