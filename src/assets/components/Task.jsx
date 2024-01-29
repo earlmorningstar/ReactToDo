@@ -33,7 +33,7 @@ useEffect(() => {
       <div className="layoutBox">
         <div className="layoutMin">
           <div className="checknTitle">
-            <input className="checkbox" type="checkbox" />
+            {/* <input className="checkbox" type="checkbox" /> */}
             <div>
               <h1>
                 <li className="lists" key={task.index}>
