@@ -1,15 +1,17 @@
 import "./App.css";
-import Task from "./assets/components/Task.jsx";
 import Header from "./assets/components/Header.jsx";
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Todo from "./assets/components/Todo.jsx";
 
 function App() {
+  
   return (
     <>
       <Header />
-      <Task />
+      <Todo />
     </>
   );
 }
 
 export default App;
+
+
