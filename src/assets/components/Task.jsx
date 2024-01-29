@@ -1,10 +1,14 @@
 import NewTask from "./NewTask.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Task({ task, onDelete, onEdit }) {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState(task);
+
+useEffect(() => {
+  setEditedTask(task);
+}, [task])
 
   function handleEditClick() {
     setIsEditing(true);

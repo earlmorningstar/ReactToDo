@@ -19,12 +19,6 @@ function handleDeleteTask(taskToDelete) {
    setTasks(updatedTasks);
  }
 
-
-//  const handleEditTask = (oldTask, newTask) => {
-//    const updatedTasks = tasks.map((task) => (task === oldTask ? newTask : task));
-//    setTasks(updatedTasks);
-//  };
-
   return (
     <>
       <NewTask onCreateTask={handleAddTask} />
