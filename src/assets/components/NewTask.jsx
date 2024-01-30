@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function NewTask({onCreateTask}) {
+export default function NewTask({ onCreateTask }) {
   const [enteredTaskData, setEnteredTaskData] = useState({
     title: "",
     date: "",
@@ -16,14 +16,13 @@ export default function NewTask({onCreateTask}) {
     });
   };
 
-  function HandleSaveTask(){
+  function HandleSaveTask() {
     if (enteredTaskData.title.trim() === "") {
-            return;
-          }
+      return;
+    }
     onCreateTask(enteredTaskData);
     setEnteredTaskData({ title: "", date: "", time: "" });
   }
-
 
   return (
     <>
@@ -51,14 +50,14 @@ export default function NewTask({onCreateTask}) {
               />
             </div>
             <div className="labelAndInput">
-             <label htmlFor="">Time:</label>
-             <input
-              type="time"
-              name="time"
-              onChange={handleInputChange}
-              value={enteredTaskData.time}
-            />
-          </div>
+              <label htmlFor="">Time:</label>
+              <input
+                type="time"
+                name="time"
+                onChange={handleInputChange}
+                value={enteredTaskData.time}
+              />
+            </div>
           </div>
           <button onClick={HandleSaveTask}>Save</button>
         </div>
