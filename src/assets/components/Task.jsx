@@ -25,12 +25,15 @@ export default function Task({ task, onDelete, onEdit }) {
     <>
       {isEditing ? (
         <>
+        <div className="editSaveBtn">
           <input
             type="text"
             value={editedTask}
             onChange={handleEditInputChange}
+            className="editInput"
           />
-          <button onClick={handleSaveClick}>Save</button>
+          <button onClick={handleSaveClick} className="editedSaveBtn">Save</button>
+        </div>
         </>
       ) : (
         <div className="sample">
