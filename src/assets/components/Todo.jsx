@@ -14,12 +14,13 @@ export default function Todo() {
     setTasks(updatedTasks);
   }
 
-  function handleEditTask(oldTask, newTask) {
+  function handleEditTask(oldTaskTitle, newTaskTitle) {
     const updatedTasks = tasks.map((task) =>
-      task === oldTask ? { ...task, title: newTask } : task
+      task === oldTaskTitle ? { ...task, title: newTaskTitle } : task
     );
     setTasks(updatedTasks);
   }
+
 
   return (
     <>

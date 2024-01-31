@@ -7,12 +7,14 @@ export default function Task({ task, onDelete, onEdit }) {
   useEffect(() => {
     setEditedTask(task.title);
   }, [task.title]);
+  
 
   function handleEditClick() {
     setIsEditing(true);
   }
 
-  function handleSaveClick() {
+
+  function handleSaveEditedTask() {
     onEdit(task, editedTask);
     setIsEditing(false);
   }
@@ -32,7 +34,7 @@ export default function Task({ task, onDelete, onEdit }) {
             onChange={handleEditInputChange}
             className="editInput"
           />
-          <button onClick={handleSaveClick} className="editedSaveBtn">Save</button>
+          <button onClick={handleSaveEditedTask} className="editedSaveBtn">Save</button>
         </div>
         </>
       ) : (
