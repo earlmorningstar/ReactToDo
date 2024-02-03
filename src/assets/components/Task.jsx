@@ -13,7 +13,6 @@ export default function Task({ task, onDelete, onEdit }) {
     setIsEditing(true);
   }
 
-
   function handleSaveEditedTask() {
     onEdit(task, editedTask);
     setIsEditing(false);

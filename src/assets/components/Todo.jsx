@@ -1,7 +1,7 @@
 import NewTask from "./NewTask";
 import { useState, useEffect } from "react";
 import Task from "./Task";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 // import { saveTasksToLocalStorage, getTasksFromLocalStorage} from "./TodoStorage.js";
 
 export default function Todo() {
@@ -35,7 +35,6 @@ export default function Todo() {
   //   saveTasks(updatedTasks);
   // };
 
-
   // --------------------
 
   // function saveTasksToFile(tasks) {
@@ -58,80 +57,89 @@ export default function Todo() {
   //   saveTasksToFile(updatedTasks);
   // };
 
-  
   // const handleDeleteTask = (taskToDelete) => {
   //   const updatedTasks = tasks.filter((task) => task !== taskToDelete);
   //   setTasks(updatedTasks);
   //   saveTasksToFile(updatedTasks);
   // };
 
-  
   // const handleEditTask = (oldTaskTitle, newTaskTitle) => {
-    //   const updatedTasks = tasks.map((task) =>
-    //     task === oldTaskTitle ? { ...task, title: newTaskTitle } : task
-    //   );
-    //   setTasks(updatedTasks);
-    //   saveTasksToFile(updatedTasks);
-    // };
+  //   const updatedTasks = tasks.map((task) =>
+  //     task === oldTaskTitle ? { ...task, title: newTaskTitle } : task
+  //   );
+  //   setTasks(updatedTasks);
+  //   saveTasksToFile(updatedTasks);
+  // };
 
-    // ----------------
+  // ----------------
 
+  useEffect(() => {
+    // Fetch tasks from the server on component mount
+    fetchTasks();
+  }, []);
 
-    useEffect(() => {
-      // Fetch tasks from the server on component mount
-      fetchTasks();
-    }, []);
-  
-    const fetchTasks = async () => {
-      try {
-        const response = await fetch('http://localhost:5177/tasks');
-        if (!response.ok) {
-          throw new Error('Failed to fetch tasks');
-        }
-        const data = await response.json();
-        setTasks(data);
-      } catch (error) {
-        console.error('Error fetching tasks:', error);
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch("http://localhost:5174/tasks");
+      if (!response.ok) {
+        throw new Error("Failed to fetch tasks");
       }
-    };
-  
-    const saveTasks = async (updatedTasks) => {
-      setTasks(updatedTasks);
-  
-      try {
-        const response = await fetch('http://localhost:5177/tasks', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(updatedTasks),
-        });
-  
-        if (response.ok) {
-          console.log('Tasks saved successfully.');
-        } else {
-          console.error('Error saving tasks.');
-        }
-      } catch (error) {
-        console.error('Error saving tasks:', error);
+      const data = await response.json();
+      setTasks(data);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
+  };
+
+  const saveTasks = async (updatedTasks) => {
+    setTasks(updatedTasks);
+
+    try {
+      const response = await fetch("http://localhost:5174/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTasks),
+      });
+
+      if (response.ok) {
+        console.log("Tasks saved successfully.");
+      } else {
+        console.error("Error saving tasks.");
       }
-    };
-    
-    function handleAddTask(newTask) {
-      const taskId = uuidv4();
-      const taskWithId = {...newTask, id: taskId};
-      setTasks([...tasks, taskWithId]);
-      // setTasks([...tasks, newTask]);
+    } catch (error) {
+      console.error("Error saving tasks:", error);
     }
+  };
 
-    function handleDeleteTask(taskToDelete) {
-      const updatedTasks = tasks.filter((task) => task !== taskToDelete);
-      setTasks(updatedTasks);
-    }
+  function handleAddTask(newTask) {
+    const taskId = uuidv4();
+    const taskWithId = { ...newTask, id: taskId };
+    setTasks([...tasks, taskWithId]);
+    // setTasks([...tasks, newTask]);
+  }
 
-  function handleEditTask(oldTaskTitle, newTaskTitle) {
+  // function handleDeleteTask(taskToDelete) {
+  //   const updatedTasks = tasks.filter((task) => task !== taskToDelete);
+  //   setTasks(updatedTasks);
+  // }
+
+  function handleDeleteTask(taskToDelete) {
+    const updatedTasks = tasks.filter((task) => task.id !== taskToDelete.id);
+    setTasks(updatedTasks);
+  }
+
+  // function handleEditTask(oldTaskTitle, newTaskTitle) {
+  //   const updatedTasks = tasks.map((task) =>
+  //     task === oldTaskTitle ? { ...task, title: newTaskTitle } : task
+  //   );
+  //   setTasks(updatedTasks);
+  // }
+
+  function handleEditTask(oldTask, newTaskTitle) {
     const updatedTasks = tasks.map((task) =>
-      task === oldTaskTitle ? { ...task, title: newTaskTitle } : task
+      task.id === oldTask.id ? { ...task, title: newTaskTitle } : task
     );
     setTasks(updatedTasks);
   }

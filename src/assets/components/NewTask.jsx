@@ -20,9 +20,22 @@ export default function NewTask({ onCreateTask }) {
     if (enteredTaskData.title.trim() === "") {
       return;
     }
-    onCreateTask(enteredTaskData);
+    const newTask = {
+      title: enteredTaskData.title,
+      date: enteredTaskData.date,
+      time: enteredTaskData.time,
+    };
+    onCreateTask(newTask);
     setEnteredTaskData({ title: "", date: "", time: "" });
   }
+
+  // function HandleSaveTask() {
+  //   if (enteredTaskData.title.trim() === "") {
+  //     return;
+  //   }
+  //   onCreateTask(enteredTaskData);
+  //   setEnteredTaskData({ title: "", date: "", time: "" });
+  // }
 
   return (
     <>
